@@ -1,3 +1,4 @@
 [
-  {"filename": "Technical Exercise Data - source1", "mapping": "map_datasource_1"}
+  {"filename": "Technical Exercise Data - source1", "mapping": "map_datasource_1"},
+  {"filename": "Technical Exercise Data - source2", "mapping": "map_datasource_2"}
 ]
