@@ -1,6 +1,7 @@
 import pandas as pd
 import importlib
 import json
+from datetime import datetime
 from pathlib import Path
 import sqlite3
 
@@ -38,8 +39,14 @@ if __name__ == "__main__":
         df_to_target = df_merged[df_merged["_merge"] == "left_only"]
         df_to_target = df_to_target.drop(columns=["_merge"])
 
-        # Load Data into Target Table:
+        # ADDING AUDIT FIELDS:
+        execution_date = datetime.today().strftime('%Y-%m-%d')  # or use datetime.now()
 
+        # Add audit fields
+        df_to_target['EXECUTION_DATE'] = execution_date
+        df_to_target['FILENAME'] = file_path
+
+        # Load Data into Target Table:
         df_to_target.to_sql("educations", conn, if_exists="append", index=False)
 
     conn.close()
